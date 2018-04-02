@@ -101,6 +101,7 @@ matrix:
         # Install dependencies
         - sudo apt-get install gcc-arm-embedded
         - pip install -r requirements.txt
+        - pip install --user cpp-coveralls
         # Print versions we use
         - arm-none-eabi-gcc --version
         - gcc --version
