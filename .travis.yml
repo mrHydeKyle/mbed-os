@@ -5,14 +5,15 @@ python:
 env:
   global:
     - >
-      STATUS=$'curl -so/dev/null --user "$MBED_BOT" --request POST
-      https://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/${TRAVIS_PULL_REQUEST_SHA:-$TRAVIS_COMMIT}
-      --data @- << DATA\n{
-      "state": "$0",
-      "description": "$1",
-      "context": "travis-ci/$NAME",
-      "target_url": "https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID"
-      }\nDATA'
+#      STATUS=$'curl -so/dev/null --user "$MBED_BOT" --request POST
+#      https://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/${TRAVIS_PULL_REQUEST_SHA:-$TRAVIS_COMMIT}
+#      --data @- << DATA\n{
+#      "state": "$0",
+#      "description": "$1",
+#      "context": "travis-ci/$NAME",
+#      "target_url": "https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID"
+#      }\nDATA'
+    STATUS="Mock"
 
 cache:
   pip: true
@@ -133,6 +134,8 @@ matrix:
           then
               STATUSM="$STATUSM ($(python -c "print '%+d' % ($CURR-$PREV)") cycles)"
           fi
+        # Coverage for events
+        - coveralls --exclude tests --gcov-options '\-lp'
         - bash -c "$STATUS" success "$STATUSM"
 
     - env:
