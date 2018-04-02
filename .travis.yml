@@ -134,7 +134,7 @@ matrix:
 #              STATUSM="$STATUSM ($(python -c "print '%+d' % ($CURR-$PREV)") cycles)"
 #          fi
         # Coverage for events
-        - coveralls --verbose
+        - coveralls -h
 #        - bash -c "$STATUS" success "$STATUSM"
 
     - env:
