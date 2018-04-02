@@ -21,6 +21,7 @@ CFLAGS += -I. -I..
 CFLAGS += -std=c99
 CFLAGS += -Wall
 CFLAGS += -D_XOPEN_SOURCE=600
+CFLAGS += -fprofile-arcs -ftest-coverage
 
 LFLAGS += -pthread
 
