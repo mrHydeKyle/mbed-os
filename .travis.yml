@@ -90,7 +90,7 @@ matrix:
         - coverage html
       after_success:
         # Coverage for tools
-        - coveralls --verbose
+        - coveralls
         # Report success since we have overridden default behaviour
 #        - bash -c "$STATUS" success "Local $NAME testing has passed"
 
@@ -134,7 +134,7 @@ matrix:
 #              STATUSM="$STATUSM ($(python -c "print '%+d' % ($CURR-$PREV)") cycles)"
 #          fi
         # Coverage for events
-        - coveralls --gcov-options '\-lp'
+        - coveralls --verbose
 #        - bash -c "$STATUS" success "$STATUSM"
 
     - env:
