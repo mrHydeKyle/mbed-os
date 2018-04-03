@@ -115,7 +115,7 @@ matrix:
         - rm -r rtos features/cellular features/netsocket features/frameworks BUILD
         - python tools/make.py -t GCC_ARM -m DISCO_F401VC --source=. --build=BUILD/DISCO_F401VC/GCC_ARM -j0
         # Run local equeue tests
-        - make -C $EVENTS/equeue test
+        - make -C $EVENTS/equeue test COVERAGE=1
         # Run profiling tests
         - make -C $EVENTS/equeue prof | tee prof
       after_success:
@@ -170,7 +170,7 @@ matrix:
         - sed -n '/``` c++/,/```/{/```/d;p;}' $LITTLEFS/README.md > main.cpp
         - python tools/make.py -t GCC_ARM -m K82F --source=. --build=BUILD/K82F/GCC_ARM -j0
         # Run local littlefs tests
-        - make -C$LITTLEFS/littlefs test QUIET=1
+        - make -C$LITTLEFS/littlefs test QUIET=1 
         # Run local littlefs tests with set of variations
         - make -C$LITTLEFS/littlefs test QUIET=1 CFLAGS+="-DLFS_READ_SIZE=64  -DLFS_PROG_SIZE=64"
         - make -C$LITTLEFS/littlefs test QUIET=1 CFLAGS+="-DLFS_READ_SIZE=1   -DLFS_PROG_SIZE=1"
