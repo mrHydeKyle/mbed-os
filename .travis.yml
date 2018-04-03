@@ -136,7 +136,7 @@ matrix:
 #              STATUSM="$STATUSM ($(python -c "print '%+d' % ($CURR-$PREV)") cycles)"
 #          fi
         # Coverage for events
-        - coveralls -b $EVENTS/equeue --exclude lib --exclude tests --gcov-options '\-lp'
+        - coveralls --gcov-options '\-lp'
 #        - bash -c "$STATUS" success "$STATUSM"
 
     - env:
@@ -212,4 +212,4 @@ matrix:
 #              STATUSM="$STATUSM ($(python -c "print '%+.2f' % (100*($CURR-$PREV)/$PREV.0)")%)"
 #          fi
 #        - bash -c "$STATUS" success "$STATUSM"
-         - coveralls -b $LITTLEFS/littlefs --exclude lib --exclude tests --gcov-options '\-lp'
+         - coveralls --gcov-options '\-lp'
