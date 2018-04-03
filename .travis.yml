@@ -144,6 +144,7 @@ matrix:
         # Install dependencies
         - sudo apt-get install gcc-arm-embedded fuse libfuse-dev
         - pip install -r requirements.txt
+        - pip install cpp-coveralls
         - git clone https://github.com/armmbed/spiflash-driver.git
         # Print versions
         - arm-none-eabi-gcc --version
@@ -208,3 +209,4 @@ matrix:
 #              STATUSM="$STATUSM ($(python -c "print '%+.2f' % (100*($CURR-$PREV)/$PREV.0)")%)"
 #          fi
 #        - bash -c "$STATUS" success "$STATUSM"
+         - coveralls -b $EVENTS/equeue --exclude lib --exclude tests --gcov-options '\-lp'
